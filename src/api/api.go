@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"encoding/json"
@@ -83,12 +83,12 @@ func listUsersHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(users)
 }
 
-func main() {
+func Handlers() *mux.Router{
 	r := mux.NewRouter()
 
 	r.HandleFunc("/users", createUserHandler).Methods("POST")
+
 	r.HandleFunc("/users", listUsersHandler).Methods("GET")
 
-	fmt.Println("Server starting")
-	http.ListenAndServe(":3000", r)
+	return r
 }
