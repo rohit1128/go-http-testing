@@ -63,7 +63,7 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func validateUniqueness(username string) error {
-	for _, u := range(userStore) {
+	for _, u := range userStore {
 		if u.Username == username {
 			return errors.New("Username is already used")
 		}
