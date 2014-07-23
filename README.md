@@ -1,10 +1,10 @@
 #Testing Go HTTP Endpoints
 
-Running API
+Running the API server
 
 ```
 #Make sure that you set your GOPATH correctly
-go run src/api.go
+go run src/main.go
 ```
 
 ```
