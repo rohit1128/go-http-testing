@@ -83,7 +83,7 @@ func listUsersHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(users)
 }
 
-func Handlers() *mux.Router{
+func Handlers() *mux.Router {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/users", createUserHandler).Methods("POST")

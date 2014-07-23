@@ -1,28 +1,28 @@
 package api_test
 
 import (
-	"net/http/httptest"
 	"api"
-	"strings"
-	"net/http"
-	"io"
-	"testing"
 	"fmt"
+	"io"
+	"net/http"
+	"net/http/httptest"
+	"strings"
+	"testing"
 )
 
 var (
-	server          *httptest.Server
-	reader          io.Reader
+	server   *httptest.Server
+	reader   io.Reader
 	usersUrl string
 )
 
-func init(){
+func init() {
 	server = httptest.NewServer(api.Handlers())
 
 	usersUrl = fmt.Sprintf("%s/users", server.URL)
 }
 
-func TestCreateUser(t *testing.T){
+func TestCreateUser(t *testing.T) {
 	userJson := `{"username": "dennis", "balance": 200}`
 
 	reader = strings.NewReader(userJson)
@@ -40,7 +40,7 @@ func TestCreateUser(t *testing.T){
 	}
 }
 
-func TestUniqueUsername(t *testing.T){
+func TestUniqueUsername(t *testing.T) {
 	userJson := `{"username": "dennis", "balance": 200}`
 
 	reader = strings.NewReader(userJson)
@@ -58,7 +58,7 @@ func TestUniqueUsername(t *testing.T){
 	}
 }
 
-func TestListUsers(t * testing.T){
+func TestListUsers(t *testing.T) {
 	reader = strings.NewReader("")
 
 	request, err := http.NewRequest("GET", usersUrl, reader)
@@ -73,4 +73,3 @@ func TestListUsers(t * testing.T){
 		t.Errorf("Success expected: %d", res.StatusCode)
 	}
 }
-
